@@ -15,14 +15,16 @@ public class progetto {
 	/*
 	 * Costruttore
 	 */
-	progetto(Integer id,String nome,String descrizione,Date data,amministratore amministratore){
+	
+	/*progetto(Integer id,String nome,String descrizione,Date data,amministratore amministratore){*/
+	progetto(Integer id,String nome){	
 		this.id=id;
 		this.nome=nome;
-		this.descrizione=descrizione;
+		/*this.descrizione=descrizione;
 		this.amministratore=amministratore;
 		this.attività=null;
 		this.stato=false;
-		this.data=data;
+		this.data=data;*/
 	}
 	
 	/* Funzione per startare il progetto
@@ -38,12 +40,14 @@ public class progetto {
 	public boolean getStato(){
 		return this.stato;
 	}
+	public String getNome(){
+		return this.nome;
+	}
 	
 	/*
 	 * Get attività
 	 */
-	public Vector<attività> getAttività(){
-		
+	public Vector<attività> getAttività(){		
 		return this.attività;
 	}
 	

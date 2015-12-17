@@ -1,5 +1,6 @@
 package it.polimi;
 import java.sql.*;
+import java.util.Date;
 import java.util.Vector;
 
 
@@ -7,15 +8,22 @@ public class Database {
 	
 	Connection conn = null;
 	Statement stmt = null;
+	Vector<progetto> progetti=new Vector<progetto>();
+	Vector<attività> att=new Vector<attività>();
+	
+	/**
+	 * Method connect DB
+	 */
 	public void connect(){
 		
 		
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 		    conn =
-		       DriverManager.getConnection("jdbc:mysql://localhost/app?" +
-		                                   "user=root&password=cocco");
+		       DriverManager.getConnection("jdbc:mysql://localhost:3308/app?" +
+		                                   "user=root&password=admin");
 	
-		    // Do something with the Connection
+		    
 	
 		  
 		} catch (SQLException ex) {
@@ -23,38 +31,111 @@ public class Database {
 		    System.out.println("SQLException: " + ex.getMessage());
 		    System.out.println("SQLState: " + ex.getSQLState());
 		    System.out.println("VendorError: " + ex.getErrorCode());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
-	public Vector<progetto> getProject(Integer id){
-		 try {
+	public ResultSet executeQ(String query){
+		
+		ResultSet rs = null;
+		
+		try {
 			stmt = conn.createStatement();
-			String sql;
-			sql = "SELECT * FROM project";
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-	         //Retrieve by column name
-	         int id1  = rs.getInt("id");
-	         int age = rs.getInt("age");
-	         String first = rs.getString("first");
-	         String last = rs.getString("last");
-
-	         //Display values
-	         System.out.print("ID: " + id1);
-	      
-			}
-		      //STEP 6: Clean-up environment
-			rs.close();
-			stmt.close();
-			conn.close();
+			rs = stmt.executeQuery(query);
+	     
 		 } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		 }
-		return null;
-		
-
+		 }	
+		return rs;
 	}
-
+	
+	
+	/*
+	 * Method to verify credentials
+	 */
+	public boolean verifyCredentials(String name,String password) throws SQLException{
+		boolean exist=false;
+		
+			String sql;
+			sql = "SELECT * FROM utente WHERE name="+name+"and password="+password;
+			ResultSet rs = executeQ(sql);
+			
+			if(rs.next()){
+				exist=true;
+			}else{
+				exist=false;
+			}
+      
+			rs.close();
+			stmt.close();
+			
+		
+		return exist;
+	}
+	
+	/**
+	 * Method for projects
+	 * @return Vector<progetto>
+	 * @throws SQLException 
+	 */
+	
+	public Vector<progetto> getProject() throws SQLException{
+		 
+			String sql;
+			sql = "SELECT * FROM progetto";
+			ResultSet rs = executeQ(sql);
+			
+			while(rs.next()){
+				
+	         //Retrieve by column name
+	         Integer id  =(Integer) rs.getInt("idprogetto");
+	         String nome = rs.getString("name");     
+	         progetto p = new progetto(id,nome);
+	         progetti.add(p);
+			}
+			
+			rs.close();
+			stmt.close();
+			
+		
+		 return progetti;	
+	}
+	
+	/*
+	 * End method projects
+	 */
+	
+	/**
+	 * Method for activities
+	 * @return Vector<attività>
+	 * @throws SQLException 
+	 */
+	
+	public Vector<attività> getActivities(Integer idprog) throws SQLException{
+		 
+			String sql;
+			sql = "SELECT * FROM attività WHERE idprogetto="+idprog;
+			ResultSet rs = executeQ(sql);
+			
+			while(rs.next()){
+				
+	          /* Aggiungere attività al vector
+	          p = new progetto(id,nome);
+	         progetti.add(p);*/
+			}
+			
+			rs.close();
+			stmt.close();
+			
+		
+		 return att;	
+	}
+	
+	/*
+	 * End method projects
+	 */
 	
 }
