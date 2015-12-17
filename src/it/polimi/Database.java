@@ -13,7 +13,7 @@ public class Database {
 		try {
 		    conn =
 		       DriverManager.getConnection("jdbc:mysql://localhost/app?" +
-		                                   "user=root&password=admin");
+		                                   "user=root&password=cocco");
 	
 		    // Do something with the Connection
 	
