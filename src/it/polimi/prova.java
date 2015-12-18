@@ -8,7 +8,6 @@ public class prova {
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		Database db = new Database();
-		db.connect();
 		
 		for(progetto prog : db.getProject()){
 			System.out.println(prog.getNome());

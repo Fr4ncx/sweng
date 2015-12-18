@@ -14,7 +14,7 @@ public class Database {
 	/**
 	 * Method connect DB
 	 */
-	public void connect(){
+	public Database(){
 		
 		
 		try {
@@ -28,12 +28,12 @@ public class Database {
 		  
 		} catch (SQLException ex) {
 		    // handle any errors
-		    System.out.println("SQLException: " + ex.getMessage());
+		    /*System.out.println("SQLException: " + ex.getMessage());
 		    System.out.println("SQLState: " + ex.getSQLState());
-		    System.out.println("VendorError: " + ex.getErrorCode());
+		    System.out.println("VendorError: " + ex.getErrorCode());*/
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class Database {
 	     
 		 } catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		 }	
 		return rs;
 	}
@@ -60,7 +60,8 @@ public class Database {
 		boolean exist=false;
 		
 			String sql;
-			sql = "SELECT * FROM utente WHERE name="+name+"and password="+password;
+			sql = "SELECT * FROM utente WHERE nome='"+name+"' AND password='"+password+"'";
+			
 			ResultSet rs = executeQ(sql);
 			
 			if(rs.next()){
@@ -91,7 +92,7 @@ public class Database {
 			while(rs.next()){
 				
 	         //Retrieve by column name
-	         Integer id  =(Integer) rs.getInt("idprogetto");
+	         Integer id  =(Integer) rs.getInt("id");
 	         String nome = rs.getString("name");     
 	         progetto p = new progetto(id,nome);
 	         progetti.add(p);

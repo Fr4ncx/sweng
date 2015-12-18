@@ -9,7 +9,7 @@ public class Demo {
 		// TODO Auto-generated method stub
 		Date d=new Date(2015-10-12);
 		amministratore a1=new amministratore(-1,"Francesco","Tria","francesco.tria@ennova-research.com");
-		progetto p=new progetto(5,"prova", "descrizione", d, a1);
+		progetto p=new progetto(5,"prova");
 		System.out.println(p.getStato());
 
 	}
