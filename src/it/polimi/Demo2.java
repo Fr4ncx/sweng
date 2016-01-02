@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import it.polimi.gui.Welcome;
+
 public class Demo2{
 	
 	private static JFrame frame;

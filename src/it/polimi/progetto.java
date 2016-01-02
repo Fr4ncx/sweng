@@ -17,11 +17,11 @@ public class progetto {
 	 */
 	
 	/*progetto(Integer id,String nome,String descrizione,Date data,amministratore amministratore){*/
-	progetto(Integer id,String nome){	
+	progetto(Integer id,String nome,String descrizione){	
 		this.id=id;
 		this.nome=nome;
-		/*this.descrizione=descrizione;
-		this.amministratore=amministratore;
+		this.descrizione=descrizione;
+		/*this.amministratore=amministratore;
 		this.attività=null;
 		this.stato=false;
 		this.data=data;*/
@@ -42,6 +42,9 @@ public class progetto {
 	}
 	public String getNome(){
 		return this.nome;
+	}
+	public String getDesc(){
+		return this.descrizione;
 	}
 	
 	/*

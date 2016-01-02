@@ -93,8 +93,9 @@ public class Database {
 				
 	         //Retrieve by column name
 	         Integer id  =(Integer) rs.getInt("id");
-	         String nome = rs.getString("name");     
-	         progetto p = new progetto(id,nome);
+	         String nome = rs.getString("name");   
+	         String desc = rs.getString("descrizione");
+	         progetto p = new progetto(id,nome,desc);
 	         progetti.add(p);
 			}
 			
