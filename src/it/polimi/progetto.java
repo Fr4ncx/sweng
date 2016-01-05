@@ -7,7 +7,7 @@ public class progetto {
 	private String nome;
 	private String descrizione;
 	private amministratore amministratore;
-	private Vector<utente> utente;
+	private Vector<utente> utenti;
 	private Vector<attività> attività;
 	private String categoria;
 	private boolean stato;
@@ -65,8 +65,17 @@ public class progetto {
 	/* Aggiunta utente
 	 * 
 	 */
-	public void addUtente(Vector<utente> utente){
-		this.utente=utente;
+	public int addUtente(utente utente){
+		//restituisce un codice di errore in caso di fallimento, 0 se l'inserimento è andato a buon fine
+		if (utente!=null){
+			if (this.utenti.add(utente)){
+				return 0;
+			}else{
+				return 2;
+			}
+		}else{
+			return 1;
+		}
 	}
 	
 	public void modifyNome(String nome){
