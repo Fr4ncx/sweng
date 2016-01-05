@@ -65,16 +65,11 @@ public class progetto {
 	/* Aggiunta/rimozione utente
 	 * 
 	 */
-	public int addUtente(utente utente){
-		//restituisce un codice di errore in caso di fallimento, 0 se l'inserimento Ë andato a buon fine
-		if (utente!=null){
-			if (this.utenti.add(utente)){
-				return 0;
-			}else{
-				return 2;
+	public void addUtente(Vector<utente> Utentidaaggiungere){
+		for (int k=0;k<Utentidaaggiungere.size();k++){
+			if (this.utenti.indexOf(Utentidaaggiungere.get(k))!=-1){
+				this.utenti.add(Utentidaaggiungere.get(k));
 			}
-		}else{
-			return 1;
 		}
 	}
 	public int removeUtente(utente utente){
@@ -105,6 +100,18 @@ public class progetto {
 			return 1;
 		}else{
 			this.attivit‡.remove(this.attivit‡.indexOf(attivitaToRemove));
+			return 0;
+		}
+	}
+	
+	public int modifyAttivit‡(attivit‡ attivit‡DaModificare, String Titolo, String Descrizione, String Testo, Vector<utente> nuoviResponsabili){
+		if (this.attivit‡.indexOf(attivit‡DaModificare)==-1){
+			return 1;
+		}else{
+			this.attivit‡.get(this.attivit‡.indexOf(attivit‡DaModificare)).addResponsabili(nuoviResponsabili);
+			this.attivit‡.get(this.attivit‡.indexOf(attivit‡DaModificare)).setNome(Titolo);
+			this.attivit‡.get(this.attivit‡.indexOf(attivit‡DaModificare)).setDescrizione(Descrizione);
+			this.attivit‡.get(this.attivit‡.indexOf(attivit‡DaModificare)).setTesto(Testo);
 			return 0;
 		}
 	}

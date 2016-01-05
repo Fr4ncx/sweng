@@ -23,7 +23,24 @@ public class attività {
 		this.responsabili=responsabili;
 		this.completato=false;
 	}
-	
+	public String getNome(){
+		return this.nome;
+	}
+	public String getDescrizione(){
+		return this.descrizione;
+	}
+	public String getTesto(){
+		return this.testo;
+	}
+	public void setNome(String nome){
+		this.nome=nome;
+	}
+	public void setTesto(String testo){
+		this.testo=testo;
+	}
+	public void setDescrizione(String descrizione){
+		this.descrizione=descrizione;
+	}
 	/* GET/SET responsabili
 	 * 
 	*/
