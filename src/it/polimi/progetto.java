@@ -9,6 +9,7 @@ public class progetto {
 	private amministratore amministratore;
 	private Vector<utente> utente;
 	private Vector<attività> attività;
+	private String categoria;
 	private boolean stato;
 	private Date data;
 	
@@ -17,10 +18,11 @@ public class progetto {
 	 */
 	
 	/*progetto(Integer id,String nome,String descrizione,Date data,amministratore amministratore){*/
-	progetto(Integer id,String nome,String descrizione){	
+	progetto(Integer id,String nome,String descrizione,String categoria){	
 		this.id=id;
 		this.nome=nome;
 		this.descrizione=descrizione;
+		this.categoria=categoria;
 		/*this.amministratore=amministratore;
 		this.attività=null;
 		this.stato=false;
@@ -40,11 +42,17 @@ public class progetto {
 	public boolean getStato(){
 		return this.stato;
 	}
+	public Integer getId(){
+		return this.id;
+	}
 	public String getNome(){
 		return this.nome;
 	}
 	public String getDesc(){
 		return this.descrizione;
+	}
+	public String getCat(){
+		return this.categoria;
 	}
 	
 	/*
@@ -59,6 +67,10 @@ public class progetto {
 	 */
 	public void addUtente(Vector<utente> utente){
 		this.utente=utente;
+	}
+	
+	public void modifyNome(String nome){
+		this.nome=nome;
 	}
 	
 }

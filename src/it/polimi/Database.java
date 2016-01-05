@@ -95,7 +95,8 @@ public class Database {
 	         Integer id  =(Integer) rs.getInt("id");
 	         String nome = rs.getString("name");   
 	         String desc = rs.getString("descrizione");
-	         progetto p = new progetto(id,nome,desc);
+	         String cat = rs.getString("categoria");
+	         progetto p = new progetto(id,nome,desc,cat);
 	         progetti.add(p);
 			}
 			
@@ -105,6 +106,22 @@ public class Database {
 		
 		 return progetti;	
 	}
+	
+	/**
+	 * Method for delete project
+	 * @return void
+	 * @throws SQLException 
+	 */
+	public void deleteProject(Integer idprog) throws SQLException{
+		String sql = "DELETE FROM progetto WHERE id="+idprog;
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		 } catch (SQLException e) {
+		 }	
+		stmt.close();	
+	}
+	
 	
 	/*
 	 * End method projects

@@ -3,6 +3,7 @@ package it.polimi.gui;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -43,7 +44,7 @@ public class Home  {
 		}
 		
 
-		frame = new JFrame("Login or Register");
+		frame = new JFrame("Social Planner Login or Register");
 		init();
 	}
 	
@@ -51,6 +52,7 @@ public class Home  {
 		frame.setSize(291,280);
 		frame.setResizable(false);
 		frame.setBackground(SystemColor.activeCaption);
+		frame.setLocationRelativeTo( null );
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -104,7 +106,7 @@ public class Home  {
 				try {
 					
 					if(d.verifyCredentials(textField.getText(), passwordField.getText())){
-						frame.dispose();
+						frame.dispose();	
 						new Welcome(textField.getText());
 					}else{
 						passwordField.setText("Wrong name");
@@ -113,6 +115,9 @@ public class Home  {
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					//e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		}	
