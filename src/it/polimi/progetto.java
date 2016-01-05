@@ -62,7 +62,7 @@ public class progetto {
 		return this.attività;
 	}
 	
-	/* Aggiunta utente
+	/* Aggiunta/rimozione utente
 	 * 
 	 */
 	public int addUtente(utente utente){
@@ -77,7 +77,49 @@ public class progetto {
 			return 1;
 		}
 	}
+	public int removeUtente(utente utente){
+		//se l'indice all'interno del vector di quell'utente è -1 (ovvero non è presente) allora non cancella nulla
+		//altrimenti cancella l'utente desiderato
+		if (this.utenti.indexOf(utente)==-1){
+			return 1;
+		}else{
+			this.utenti.remove(this.utenti.indexOf(utente));
+			return 0;
+		}
+	}
 	
+	//aggiunta/rimozione attività
+	public int addAttività(attività nuovaAttività){
+		if (nuovaAttività!=null){
+			if (this.attività.add(nuovaAttività)){
+				return 0;
+			}else{
+				return 1;
+			}
+		}else{
+			return 2;
+		}
+	}
+	public int removeAttività(attività attivitaToRemove){
+		if (this.attività.indexOf(attivitaToRemove)==-1){
+			return 1;
+		}else{
+			this.attività.remove(this.attività.indexOf(attivitaToRemove));
+			return 0;
+		}
+	}
+	public int setAdmin(utente adminToSet){
+		//per settare l'admin, dev'essere presente nella lista degli utenti partecipanti al progetto
+		if (this.utenti.indexOf(adminToSet)==-1){
+			return 1;
+		}else{
+			if (this.amministratore.equals(adminToSet)){
+				return 0;
+			}else{
+				return 2;
+			}
+		}
+	}
 	public void modifyNome(String nome){
 		this.nome=nome;
 	}
