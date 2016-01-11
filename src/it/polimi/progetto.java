@@ -130,5 +130,27 @@ public class progetto {
 	public void modifyNome(String nome){
 		this.nome=nome;
 	}
-	
+	//completa l'attività SE E SOLO SE le precedenti sono tutte completate
+	public int completeActivity(attività activityToComplete){
+		if (this.attività.indexOf(activityToComplete)==-1){
+			return 1;
+		}else{
+			
+			for (int i=0;i<(this.attività.indexOf(activityToComplete)-1);i++){
+				if (!(this.attività.get(i).getCompletato())){
+					return 2;
+				}
+			}
+			this.attività.get(this.attività.indexOf(activityToComplete)).setCompletato();
+			return 0;
+		}
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 }

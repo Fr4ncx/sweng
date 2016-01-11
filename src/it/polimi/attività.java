@@ -10,7 +10,7 @@ public class attività {
 	private String descrizione;
 	private String testo;
 	private Vector<utente> responsabili;
-	private boolean completato;
+	private boolean status;
 	
 	/* Costruttore
 	 * 
@@ -21,7 +21,7 @@ public class attività {
 		this.data=data;
 		this.descrizione=descrizione;
 		this.responsabili=responsabili;
-		this.completato=false;
+		this.status=false;
 	}
 	public String getNome(){
 		return this.nome;
@@ -66,6 +66,9 @@ public class attività {
 	 * 
 	*/
 	public void setCompletato(){
-		this.completato=true;
+		this.status=true;
+	}
+	public boolean getCompletato(){
+		return this.status;
 	}
 }
