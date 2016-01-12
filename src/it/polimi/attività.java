@@ -66,6 +66,10 @@ public class attività {
 	 * 
 	*/
 	public void setCompletato(){
+		Database db= Database.getInstance();
+		if (db){
+			db.setCompletato(this);
+		}
 		this.status=true;
 	}
 	public boolean getCompletato(){

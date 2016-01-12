@@ -10,10 +10,16 @@ public class Database {
 	Statement stmt = null;
 	Vector<progetto> progetti=new Vector<progetto>();
 	Vector<attività> att=new Vector<attività>();
-	
+	 private static Database instance = null;
 	/**
 	 * Method connect DB
 	 */
+	public static Database getInstance() {
+	       if(instance == null) {
+	          instance = new Database();
+	       }
+	       return instance;
+	    }
 	public Database(){
 		
 		
